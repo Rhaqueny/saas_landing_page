@@ -2,6 +2,7 @@ import React from "react";
 import { Element } from "react-scroll";
 import { useState } from "react";
 import clsx from "clsx";
+import { plans } from "../constants";
 
 const Pricing = () => {
   const [monthly, setMonthly] = useState(false);
@@ -38,12 +39,72 @@ const Pricing = () => {
               >
                 Annual
               </button>
-              <div 
-                className="g4 rounded-14 before:h-100 pricing-head_btn_before 
-                absolute left-2 top-2 h-[calc(100%-16px)] w-[calc(50%-8px)] 
-                overflow-hidden shadow-400 transition-transform duration-500"
+              <div
+                className={clsx(
+                  "g4 rounded-14 before:h-100 pricing-head_btn_before absolute left-2 top-2 h-[calc(100%-16px)] w-[calc(50%-8px)] overflow-hidden shadow-400 transition-transform duration-500",
+                  !monthly && "translate-x-full"
+                )}
               />
             </div>
+
+            <div className="pricing-bg">
+              <img
+                src="/images/bg-outlines.svg"
+                width={960}
+                height={380}
+                alt="outline"
+                className="relative z-2"
+              />
+              <img
+                src="/images/bg-outlines-fill.png"
+                width={960}
+                height={380}
+                alt="outline"
+                className="absolute inset-0 opacity-5 mix-blend-soft-light"
+              />
+            </div>
+          </div>
+
+          <div
+            className="scroll-hide relative z-2 -mt-12 flex 
+          items-start max-xl:gap-5 max-xl:overflow-auto max-xl:pt-6"
+          >
+            {plans.map((plan, index) => (
+              <div
+                key={plan.id}
+                className="pricing-plan_first 
+                  pricing-plan_odd pricing-plan_even relative 
+                  border-2 p-7 max-xl:min-w-80 max-lg:rounded-3xl 
+                  xl:w-[calc(33.333%+2px)]"
+              >
+                {index === 1 && (
+                  <div
+                    className="g4 absolute h-330 left-0 
+                right-0 top-0 z-1 rounded-tl-3xl rounded-tr-3xl"
+                  />
+                )}
+
+                <div
+                  className={clsx(
+                    "absolute left-0 right-0 z-2 flex items-center justify-center",
+                    index === 1 ? "-top-6" : "-top-6 xl:-top-11"
+                  )}
+                >
+                  <img
+                    src={plan.logo}
+                    alt={plan.title}
+                    className={clsx(
+                      "object-contain drop-shadow-2xl",
+                      index === 1 ? "size-[120px]" : "size-[88px]"
+                    )}
+                  />
+                </div>
+
+                <div className={clsx('relative flex flex-col items-center', index === 1 ? 'pt-24' : 'pt-12')}>
+
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </Element>
