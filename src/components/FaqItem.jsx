@@ -4,7 +4,7 @@ import { useState } from "react";
 import { SlideDown } from "react-slidedown";
 import "react-slidedown/lib/slidedown.css";
 
-const FaqItem = ({ key, item, index }) => {
+const FaqItem = ({ item, index }) => {
   const [activeId, setActiveId] = useState(null);
   const active = activeId === item.id;
 
