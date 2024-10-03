@@ -24,8 +24,15 @@ const Testimonials = () => {
               />
             ))}
           </div>
-          <div className="flex-50 ">
-
+          <div className="flex-50">
+            {testimonials.slice(halfLength).map((testimonial) => (
+              <TestimonialItem
+                key={testimonial.id}
+                item={testimonial}
+                containerClassName="last:after:hidden after:right-auto
+                after:left-0 after:max-md:-left-4 md:px-12"
+              />
+            ))}
           </div>
         </div>
       </div>
